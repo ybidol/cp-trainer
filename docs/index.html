@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cf: '#1890ff',
+                        atcoder: '#6f42c1',
+                        leetcode: '#ffa116',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-deep: #0a0a0f;
+            --bg-surface: #12121a;
+            --bg-raised: #1a1a26;
+            --border: #2a2a3a;
+            --text-primary: #eeeef0;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6a6a7e;
+        }
+        body { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.5; background: var(--bg-deep); -webkit-font-smoothing: antialiased; }
+        .bg-gray-950 { background: var(--bg-deep) !important; }
+        .bg-gray-900 { background: var(--bg-surface) !important; }
+        .bg-gray-800 { background: var(--bg-raised) !important; }
+        .border-gray-800 { border-color: var(--border) !important; }
+        .text-gray-100 { color: var(--text-primary) !important; }
+        .text-gray-400 { color: var(--text-secondary) !important; }
+        .text-gray-500 { color: #8888a0 !important; }
+        .text-gray-600 { color: var(--text-muted) !important; }
+        .text-xs { font-size: 0.85rem !important; }
+        .text-sm { font-size: 0.95rem !important; }
+        .text-lg { font-size: 1.25rem !important; }
+        .text-2xl { font-size: 1.7rem !important; }
+        .font-mono { font-family: 'JetBrains Mono', monospace !important; }
+        .rounded-xl { border-radius: 16px !important; }
+        details .text-sm { font-size: 1.05rem !important; line-height: 1.55 !important; color: #d0d0dc !important; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen">
+    <nav class="bg-gray-900 border-b border-gray-800 sticky top-0 z-40">
+        <div class="max-w-3xl mx-auto px-3 sm:px-6 py-4 flex items-center justify-between">
+            <span class="text-2xl font-bold text-white tracking-tight">CP Trainer</span>
+            <span class="text-xs text-gray-600">2026-05-06</span>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-2 sm:px-6 py-4 sm:py-8">
+
+
+<div class="space-y-2">
+    
+    <details class="bg-gray-900 rounded-xl border border-gray-800 group">
+        <summary class="px-4 py-3 cursor-pointer select-none flex items-center justify-between text-sm font-semibold text-gray-300 hover:text-white">
+            <span>C1</span>
+            <span class="flex items-center gap-3 shrink-0">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span class="text-gray-600 text-xs group-open:rotate-90 transition-transform">▸</span>
+            </span>
+        </summary>
+        <div class="px-2 sm:px-3 pb-3 pt-1 space-y-2">
+            
+            <div class="bg-gray-950/40 rounded-lg border border-gray-800
+                border-l-4 border-l-red-500
+                ">
+                <div class="p-3 sm:p-4">
+                    <a href="https://codeforces.com/contest/977/problem/E" target="_blank"
+                       class="text-lg font-semibold text-blue-400 hover:underline">
+                        Cyclic Components
+                    </a>
+                    
+                    <div class="mt-3 space-y-1.5">
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 1
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Try drawing a few small graphs that <strong>are</strong> cycles versus components that aren't (a tree, a cycle with an extra chord, a path). What's the simplest local feature that separates the cycle ones from the rest?</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 2
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Look at the <strong>degree</strong> of each vertex inside such a component. In a simple cycle of length $k \geq 3$, every vertex touches exactly two edges — anything else (a leaf, a branch, a chord) breaks that immediately.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 3
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">So the condition becomes: a connected component is a cycle iff <strong>every vertex in it has degree exactly 2</strong> (the size $\geq 3$ requirement comes for free, since the graph has no self-loops or multi-edges, so degree-2 components must have at least 3 vertices).</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 4
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Algorithm: build the graph, find connected components with <strong>DSU</strong> (or BFS/DFS), and for each component check whether <strong>all</strong> its vertices have degree 2. Count components that pass. Complexity $O(n + m \, \alpha(n))$ with DSU.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 5
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Implementation sketch — read $n, m$, maintain a <code>deg[]</code> array and DSU <code>parent[]</code>/<code>rank[]</code>; for each edge $(u,v)$ do <code>deg[u]+=1; deg[v]+=1; union(u,v)</code>. Then group vertices by <code>find(v)</code> into a dict, and for each group increment the answer iff <code>all(deg[x]==2 for x in group)</code>.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 6
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Python perf: use <code>sys.stdin.buffer.read().split()</code> for input ($m$ up to $2 \cdot 10^5$), iterative DSU with path compression, and avoid recursion (no DFS recursion — recursion limit and overhead bite). Singleton components (degree 0) are correctly excluded since $0 \neq 2$, and isolated edges (two degree-1 vertices) are excluded too — no special-casing needed.</div>
+                        </details>
+                        
+                        <details>
+                            <summary class="text-sm text-amber-500 hover:text-amber-400 cursor-pointer">Style</summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-amber-900"><strong>Canonical pattern:</strong> Connected-component enumeration on an undirected graph — DSU or BFS/DFS to group vertices, then check a per-component property.<br><strong>Twist:</strong> The property is geometric on the graph itself: a component is a 'cycle' iff it's a simple cycle, which has a clean local characterization rather than needing actual cycle detection.<br><strong>Builds:</strong> Translating a global structural definition ("the component IS a cycle") into a tiny local invariant you can check in $O(1)$ per component.<br><strong>Platform idiom:</strong> Classic Codeforces observation problem — standard tag (DSU/DFS) plus one neat reformulation.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Editorial
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><a href="https://codeforces.com/search?query=editorial+977" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Read Editorial &rarr;</a></div>
+                        </details>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </details>
+    
+    <details class="bg-gray-900 rounded-xl border border-gray-800 group">
+        <summary class="px-4 py-3 cursor-pointer select-none flex items-center justify-between text-sm font-semibold text-gray-300 hover:text-white">
+            <span>C2</span>
+            <span class="flex items-center gap-3 shrink-0">
+                <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                <span class="text-gray-600 text-xs group-open:rotate-90 transition-transform">▸</span>
+            </span>
+        </summary>
+        <div class="px-2 sm:px-3 pb-3 pt-1 space-y-2">
+            
+            <div class="bg-gray-950/40 rounded-lg border border-gray-800
+                border-l-4 border-l-yellow-500">
+                <div class="p-3 sm:p-4">
+                    <a href="https://codeforces.com/contest/1542/problem/B" target="_blank"
+                       class="text-lg font-semibold text-blue-400 hover:underline">
+                        Plus and Multiply
+                    </a>
+                    
+                    <div class="mt-3 space-y-1.5">
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 1
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Run the operations by hand for $a=3, b=6$ and list the first ~10 elements. Try writing each one as <strong>(something involving $a$) + (something involving $b$)</strong> — does a uniform shape jump out?</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 2
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Trace what each operation does to such a shape: if a number looks like '<strong>power-of-$a$ core</strong> plus <strong>multiple of $b$</strong>', then $+b$ only bumps the multiple, while $\times a$ bumps the power but <em>also</em> rescales the multiple — which is still a multiple of $b$. So the shape is preserved.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 3
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">This means every reachable element can be written as $a^k + m \cdot b$ for some integers $k \geq 0$ and $m \geq 0$. So $n$ is in the set <strong>iff there exists $k \geq 0$ with $a^k \leq n$ and $(n - a^k) \bmod b = 0$</strong>.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 4
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Iterate $k = 0, 1, 2, \ldots$ while $a^k \leq n$ and check the divisibility — at most $\log_a n \leq 30$ steps per query, so $O(\log n)$ overall. <strong>Critical edge case: $a = 1$</strong>. Then $a^k = 1$ forever and your loop won't terminate — handle it separately by just checking $(n-1) \bmod b = 0$.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 5
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Python sketch: read all input with <code>sys.stdin.buffer.read().split()</code>, accumulate answers in a list, output via <code>sys.stdout.write('\n'.join(out))</code> since $t \leq 10^5$. Core logic:<br><code>def solve(n,a,b):<br>&nbsp;&nbsp;if a==1: return (n-1)%b==0<br>&nbsp;&nbsp;p=1<br>&nbsp;&nbsp;while p<=n:<br>&nbsp;&nbsp;&nbsp;&nbsp;if (n-p)%b==0: return True<br>&nbsp;&nbsp;&nbsp;&nbsp;p*=a<br>&nbsp;&nbsp;return False</code><br>Don't forget $k=0$ (i.e. $p=1$) covers the case $n \equiv 1 \pmod b$, and $n=1$ itself returns True via $(1-1)\%b=0$.</div>
+                        </details>
+                        
+                        <details>
+                            <summary class="text-sm text-amber-500 hover:text-amber-400 cursor-pointer">Style</summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-amber-900"><strong>Canonical pattern:</strong> A reachability problem in disguise — the right move is to find a <strong>closed-form expression</strong> for every element of the set, turning a search problem into a checkable formula.<br><strong>Twist:</strong> The two operations ($\times a$ and $+b$) interact in a subtle way: multiplying by $a$ scales any pending offset, but the structure still collapses to a clean two-parameter form.<br><strong>Builds:</strong> Spotting <strong>algebraic invariants</strong> under combined operations, and recognizing when iterating one parameter (with the other free) is bounded by $\log$.<br><strong>Platform idiom:</strong> Classic Codeforces math/constructive — short code, but you only see it after the algebraic reframe.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Editorial
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><a href="https://codeforces.com/search?query=editorial+1542" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Read Editorial &rarr;</a></div>
+                        </details>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </details>
+    
+    <details class="bg-gray-900 rounded-xl border border-gray-800 group">
+        <summary class="px-4 py-3 cursor-pointer select-none flex items-center justify-between text-sm font-semibold text-gray-300 hover:text-white">
+            <span>C3</span>
+            <span class="flex items-center gap-3 shrink-0">
+                <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                <span class="text-gray-600 text-xs group-open:rotate-90 transition-transform">▸</span>
+            </span>
+        </summary>
+        <div class="px-2 sm:px-3 pb-3 pt-1 space-y-2">
+            
+            <div class="bg-gray-950/40 rounded-lg border border-gray-800
+                border-l-4 border-l-yellow-500">
+                <div class="p-3 sm:p-4">
+                    <a href="https://atcoder.jp/contests/abc165/tasks/abc165_c" target="_blank"
+                       class="text-lg font-semibold text-blue-400 hover:underline">
+                        C. Many Requirements
+                    </a>
+                    
+                    <div class="mt-3 space-y-1.5">
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 1
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Before reaching for any algorithm, stare at the constraints: $N \leq 10$ and $M \leq 10$. How many non-decreasing sequences $A$ of length $N$ with values in $[1, M]$even <em>exist</em>? Try to count them — or even list them by hand for $N=M=3$.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 2
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">A non-decreasing sequence of length $N$ over $\{1, \ldots, M\}$ is equivalent to a multiset of size $N$ from $M$ choices, so by stars-and-bars there are $\binom{N+M-1}{N}$ of them. For $N=M=10$ that's $92378$ — you can <strong>afford to enumerate every valid sequence</strong> and score each one.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 3
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Build sequences with simple <strong>recursive backtracking</strong>: pick $A_1$, then for each choice loop $A_2 \geq A_1$, then $A_3 \geq A_2$, and so on. When the sequence has length $N$, evaluate the score against all $Q$ quadruples and update the maximum.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 4
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Total work is bounded by (number of sequences) $\times Q \approx 92378 \times 50 \approx 4.6 \times 10^6$ operations — well within Python's limit. Define $\text{dfs}(\text{idx}, \text{prev}, A)$: if $\text{idx} = N$ score it; otherwise loop $v$ from $\text{prev}$ to $M$, append $v$, recurse, pop.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 5
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Code sketch:<br><pre>import sys
+input = sys.stdin.readline
+N, M, Q = map(int, input().split())
+quads = [tuple(map(int, input().split())) for _ in range(Q)]
+best = 0
+def dfs(A):
+ global best
+ if len(A) == N:
+ s = sum(d for a,b,c,d in quads if A[b-1]-A[a-1]==c)
+ if s > best: best = s
+ return
+ start = A[-1] if A else 1
+ for v in range(start, M+1):
+ A.append(v); dfs(A); A.pop()
+dfs([])
+print(best)</pre>Edge cases: $N=2$ (sequences are just pairs), and remember $a_i, b_i$ are 1-indexed in the input.</div>
+                        </details>
+                        
+                        <details>
+                            <summary class="text-sm text-amber-500 hover:text-amber-400 cursor-pointer">Style</summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-amber-900"><strong>Canonical pattern:</strong> Brute-force enumeration of all valid candidates — when constraints are tiny, the answer is to just try everything.<br><strong>Twist:</strong> The objective looks like it demands cleverness (DP, greedy, LP-flavor optimization), but $N, M \leq 10$ collapses the search space to under 100k non-decreasing sequences. The whole skill is recognizing that.<br><strong>Builds:</strong> Reading constraints first and trusting them — many problems are gift-wrapped brute force in disguise. Also the stars-and-bars intuition for counting non-decreasing sequences.<br><strong>Platform idiom:</strong> Classic ABC-C shape — small bounds, recursive enumeration, score-and-take-max. AtCoder rewards spotting that brute force is intended over reaching for a fancier algorithm.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Editorial
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><a href="https://atcoder.jp/contests/abc165/editorial" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Read Editorial &rarr;</a></div>
+                        </details>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </details>
+    
+    <details class="bg-gray-900 rounded-xl border border-gray-800 group">
+        <summary class="px-4 py-3 cursor-pointer select-none flex items-center justify-between text-sm font-semibold text-gray-300 hover:text-white">
+            <span>C4</span>
+            <span class="flex items-center gap-3 shrink-0">
+                <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                <span class="text-gray-600 text-xs group-open:rotate-90 transition-transform">▸</span>
+            </span>
+        </summary>
+        <div class="px-2 sm:px-3 pb-3 pt-1 space-y-2">
+            
+            <div class="bg-gray-950/40 rounded-lg border border-gray-800
+                border-l-4 border-l-yellow-500">
+                <div class="p-3 sm:p-4">
+                    <a href="https://leetcode.com/problems/parallel-courses-ii/" target="_blank"
+                       class="text-lg font-semibold text-blue-400 hover:underline">
+                        Parallel Courses II
+                    </a>
+                    
+                    <div class="mt-3 space-y-1.5">
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 1
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Try the obvious greedy on example 2 by hand: with $k=2$ and courses $\{2,3,4\}$ all initially available, does it matter <strong>which two</strong> you pick first? Picking $\{2,3\}$ vs $\{2,4\}$ leads to different futures — so there's a real <strong>choice</strong> at every semester, not a forced move. Any rule like "prefer the course that unlocks the most" can be broken with a small counterexample.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 2
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Look at the constraint $n \leq 15$. That bound is unusual — it's far too small for a polynomial algorithm to be the intended target, and far too large for brute-force permutations of course orderings. It's exactly the size where the <strong>entire set of completed courses</strong> can live inside one integer as a bitmask of $\leq 2^{15} = 32768$ states.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 3
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Define $dp[\text{mask}] = $ minimum semesters to have completed exactly the courses in $\text{mask}$. From a state $\text{mask}$, compute $\text{available} = \{v : \text{prereq}(v) \subseteq \text{mask}\} \setminus \text{mask}$ as a bitmask, then transition to $dp[\text{mask} \mid \text{sub}] = dp[\text{mask}] + 1$ for every <strong>submask</strong> $\text{sub}$ of $\text{available}$ with $\text{popcount}(\text{sub}) \leq k$. Enumerate submasks with the standard trick: <code>sub = available; while sub:...; sub = (sub - 1) &amp; available</code>, plus $\text{sub} = 0$ skipped.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 4
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800">Precompute <code>pre[v]</code> = bitmask of $v$'s prerequisites. Then:<br><code>dp = [INF]*(1&lt;&lt;n); dp[0]=0</code><br><code>for mask in range(1&lt;&lt;n):</code><br>&nbsp;&nbsp;<code>if dp[mask]==INF: continue</code><br>&nbsp;&nbsp;<code>avail = 0</code><br>&nbsp;&nbsp;<code>for v in range(n):</code><br>&nbsp;&nbsp;&nbsp;&nbsp;<code>if not (mask&gt;&gt;v)&amp;1 and (pre[v]&amp;mask)==pre[v]: avail |= 1&lt;&lt;v</code><br>&nbsp;&nbsp;<code>sub = avail</code><br>&nbsp;&nbsp;<code>while sub:</code><br>&nbsp;&nbsp;&nbsp;&nbsp;<code>if bin(sub).count('1')&lt;=k: dp[mask|sub] = min(dp[mask|sub], dp[mask]+1)</code><br>&nbsp;&nbsp;&nbsp;&nbsp;<code>sub = (sub-1)&amp;avail</code><br>Return $dp[2^n-1]$. Total work is $O(3^n \cdot n) \approx 2 \cdot 10^7$ for $n=15$ — fine in Python. Don't forget to skip $\text{sub}=0$ (it would loop forever) and that <code>pre[v]&amp;mask == pre[v]</code> is the clean "all prereqs done" check.</div>
+                        </details>
+                        
+                        <details>
+                            <summary class="text-sm text-amber-500 hover:text-amber-400 cursor-pointer">Style</summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-amber-900"><strong>Canonical pattern:</strong> $n \leq 15$ is the loud signal — the entire set of finished courses fits in a single integer, so this is <strong>bitmask DP over subsets</strong>.<br><strong>Twist:</strong> the obvious greedy ("each semester take any $k$ available courses, prefer those that unlock the most") <strong>provably fails</strong> — you must enumerate which $k$-subset of available courses to take this semester.<br><strong>Builds:</strong> recognizing when a tempting greedy breaks under choice constraints, and the standard <strong>"iterate over submasks of a mask"</strong> idiom.<br><strong>Platform idiom:</strong> classic LC "looks like a scheduling greedy but isn't" trap — small $n$ is the tell that exhaustive subset search is intended.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Editorial
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><a href="https://leetcode.com/problems/parallel-courses-ii/solutions/" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Read Editorial &rarr;</a></div>
+                        </details>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </details>
+    
+    <details class="bg-gray-900 rounded-xl border border-gray-800 group">
+        <summary class="px-4 py-3 cursor-pointer select-none flex items-center justify-between text-sm font-semibold text-gray-300 hover:text-white">
+            <span>C5</span>
+            <span class="flex items-center gap-3 shrink-0">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span class="text-gray-600 text-xs group-open:rotate-90 transition-transform">▸</span>
+            </span>
+        </summary>
+        <div class="px-2 sm:px-3 pb-3 pt-1 space-y-2">
+            
+            <div class="bg-gray-950/40 rounded-lg border border-gray-800
+                border-l-4 border-l-red-500
+                ">
+                <div class="p-3 sm:p-4">
+                    <a href="https://leetcode.com/problems/substring-with-largest-variance/" target="_blank"
+                       class="text-lg font-semibold text-blue-400 hover:underline">
+                        Substring With Largest Variance
+                    </a>
+                    
+                    <div class="mt-3 space-y-1.5">
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 1
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 1:</strong> Notice that the answer only ever depends on <strong>two specific characters at a time</strong> — the one being counted positively and the one being counted negatively. What if you committed to which two characters you cared about and ignored everything else in the string?</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 2
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 2:</strong> Once you fix character $a$ (the 'plus') and character $b$ (the 'minus'), the variance of any substring is just $(\text{count of } a) - (\text{count of } b)$ inside that window. So mentally rewrite the string as a sequence of $+1$ (for $a$), $-1$ (for $b$), and $0$ (for everything else).</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 3
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 3:</strong> Now the problem reduces to: over all contiguous substrings of this $\pm 1/0$ array, what is the <strong>maximum sum</strong>? You only need to repeat this for all $26 \times 26$ ordered pairs $(a, b)$ with $a \neq b$ and take the best.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 4
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 4:</strong> Maximum contiguous subarray sum is <strong>Kadane's algorithm</strong>, $O(n)$ per pair. But there's a fatal catch: variance requires both characters to actually be <strong>present in the chosen window</strong>. A substring of just $a$'s gives a big positive sum but zero $b$'s — its true variance is $0$, not $\text{count}(a)$. Plain Kadane will happily return that bogus answer.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 5
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 5:</strong> So you need a Kadane variant that enforces <strong>at least one $b$ inside the window</strong>. Carry <strong>two</strong> rolling quantities as you scan left to right: $\text{diff}$ = best Kadane sum ending here (no constraint), and $\text{diff\_with\_b}$ = best Kadane sum ending here that is <strong>guaranteed</strong> to contain at least one $b$.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 6
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 6:</strong> Update rules per character $c$:<br>• if $c = a$: both $\text{diff}$ and $\text{diff\_with\_b}$ increase by $1$.<br>• if $c = b$: this $b$ is the 'guarantor', so set $\text{diff\_with\_b} = \text{diff} - 1$ <em>first</em>, then update $\text{diff} = \max(0, \text{diff} - 1)$.<br>• else: nothing changes.<br>Order matters — compute $\text{diff\_with\_b}$ from the <em>old</em> $\text{diff}$ before resetting.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 7
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 7 (the pitfall that probably tripped you up):</strong> When $\text{diff}$ resets to $0$ via $\max(0, \cdot)$, $\text{diff\_with\_b}$ must <strong>NOT</strong> also reset to $0$ — a value of $0$ would imply 'empty window, no $b$', which is invalid. Initialize $\text{diff\_with\_b} = -\infty$ (or e.g. $-10^9$) at the start of each pair, so it can only contribute to the answer after a real $b$ has been processed.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 8
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 8:</strong> Update the global answer with $\text{diff\_with\_b}$ <strong>after every character</strong> (not just after $b$'s — though only $b$-or-$a$ events change it). Total complexity: $O(26 \times 26 \times n) = O(676 n)$, comfortably fine for $n \leq 10^4$.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 9
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 9:</strong> Small but worthwhile speedup: only iterate over characters <strong>actually present</strong> in $s$ (use $\text{set}(s)$). Pairs where $a$ or $b$ is absent contribute nothing useful and waste a full $O(n)$ pass.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 10
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 10 — Python sketch:</strong><br><pre>def largestVariance(s: str) -> int:
+ chars = set(s)
+ ans = 0
+ for a in chars:
+ for b in chars:
+ if a == b: continue
+ diff = 0
+ diff_with_b = -10**9
+ for c in s:
+ if c == a:
+ diff += 1
+ diff_with_b += 1
+ elif c == b:
+ diff_with_b = diff - 1
+ diff = diff - 1 if diff > 0 else 0
+ if diff_with_b > ans:
+ ans = diff_with_b
+ return ans</pre></div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 11
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 11 — perf & edge cases:</strong> $676 \times 10^4 \approx 6.8 \times 10^6$ ops is fine in Python, but the inner loop is hot — keep it lean (no extra $\max$ calls, no method lookups). If borderline TLE, pre-convert $s$ to a tuple/bytes once. Edge cases: all-distinct string returns $0$; a single-character string returns $0$; ensure $a \neq b$ in the outer loop.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Hint 12
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><strong>Hint 12 — why this trick generalizes:</strong> The 'two-state Kadane' (one unconstrained, one that has consumed the required element) is the standard pattern for <strong>maximum subarray with a 'must contain' constraint</strong>. Remember it — variants appear constantly (e.g. 'max subarray sum that includes index $k$', 'max subarray with at least one negative number').</div>
+                        </details>
+                        
+                        <details>
+                            <summary class="text-sm text-amber-500 hover:text-amber-400 cursor-pointer">Style</summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-amber-900"><strong>Canonical pattern:</strong> maximum subarray sum (<strong>Kadane's</strong>) on a transformed <strong>+1/−1/0</strong> array — fix which two characters matter, ignore the rest, and you've reduced variance to a classic linear-scan problem.<br><strong>Twist:</strong> vanilla Kadane is wrong here — variance demands that the <strong>negative character actually appears</strong> in the window, otherwise a single 'a' would falsely score $+1$. You need Kadane with a <strong>'must include at least one X'</strong> constraint.<br><strong>Builds:</strong> recognizing when an outer brute-force dimension ($26 \times 26$ pairs) unlocks a clean inner DP, plus the trick of carrying a <strong>second state</strong> to enforce 'contains element' constraints in subarray problems.<br><strong>Platform idiom:</strong> LeetCode Hard interview flavor — small alphabet + 'maximum over all substrings' phrasing should immediately suggest fixing the pair and reducing to a 1D scan.</div>
+                        </details>
+                        
+                        
+                        <details>
+                            <summary class="text-sm text-gray-500 hover:text-gray-300 cursor-pointer">
+                                Editorial
+                            </summary>
+                            <div class="text-sm text-gray-300 mt-1.5 pl-3 border-l-2 border-gray-800"><a href="https://leetcode.com/problems/substring-with-largest-variance/solutions/" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Read Editorial &rarr;</a></div>
+                        </details>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </details>
+    
+</div>
+
+
+    </main>
+
+    <footer class="text-center text-xs text-gray-700 py-8">
+        Generated by CP Trainer on 2026-05-06
+    </footer>
+</body>
+</html>
